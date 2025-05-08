@@ -2,17 +2,55 @@
 
 <html>
 <head>
-    <title>Dropdown voorbeeld</title>
+     <style>
+        .upload-box {
+            border: 2px dashed #aaa;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 300px;
+            cursor: pointer;
+        }
+
+        .preview {
+            margin-top: 20px;
+        }
+
+        .preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <label for="keuze">Kies een optie:</label>
-    <select id="keuze" name="keuze">
-        <option value="optie1">Optie 1</option>
-        <option value="optie2">Optie 2</option>
-        <option value="optie3">Optie 3</option>
-    </select>
-  <a href="index.html" class="button">🏠 Terug naar Home</a>
+    <!-- Upload Doos -->
+    <div class="upload-box" onclick="document.getElementById('fileInput').click();">
+        Klik hier of sleep je foto erin 📸
+        <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="showImage(this)">
+    </div>
 
+    <!-- Waar de foto verschijnt -->
+    <div class="preview" id="preview"></div>
+
+    <script>
+        function showImage(input) {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = ''; // Maak leeg bij nieuwe upload
+
+            for (let file of input.files) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 </html>
