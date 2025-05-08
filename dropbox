@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdown voorbeeld</title>
+</head>
+<body>
+
+    <label for="keuze">Kies een optie:</label>
+    <select id="keuze" name="keuze">
+        <option value="optie1">Optie 1</option>
+        <option value="optie2">Optie 2</option>
+        <option value="optie3">Optie 3</option>
+    </select>
+
+</body>
+</html>
